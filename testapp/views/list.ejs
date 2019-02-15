@@ -37,10 +37,7 @@
     </script>
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= datas %></p>
-    <a href="users">users</a> <a href="/">home</a> <a href="test">test</a> <a href="list">list</a>
-    <hr>
+    <%- include('menu')%>
     <table border="1">
       <thead>
         <tr>
@@ -53,6 +50,14 @@
       <tbody id="listTable">
 
       </tbody>
+      <% JSON.parse(datas).forEach(function(vo,index){ %>
+        <tr>
+          <td><a href="update?_id=<%=vo._id %>"><%=vo._id %></a></td>
+          <td><%=vo.id %></td>
+          <td><%=vo.pw %></td>
+          <td><a href="deleteOK?_id=<%=vo._id %>">deleteOK</a></td>
+        </tr>
+      <% }); %>
     </table>
   </body>
 </html>
